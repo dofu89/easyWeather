@@ -1,0 +1,8 @@
+export const SET_CITY = 'SET_CITY';
+export const ADD_CITY = 'ADD_CITY';
+export const REMOVE_CITY = 'REMOVE_CITY';
+export const GET_TEMP = 'GET_TEMP';
+export const GET_WEATHER_CONDITION = 'GET_WEATHER_CONDITION';
+export const IS_LOADING = 'IS_LOADING';
+export const SET_TOKEN = 'SET_TOKEN';
+export const SET_USERNAME = 'SET_USERNAME';
