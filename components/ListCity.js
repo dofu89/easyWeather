@@ -6,11 +6,16 @@ import {setCity, removeCity} from '../store/actions';
 import {connect} from 'react-redux';
 
 const ListCity = (props) => {
+  const {navigation} = props;
+
+  const chooseCity = () => {
+    props.item.title !== props.cityName ? props.setCity(props.item.title) : navigation.navigate('CurrentCity')
+  }
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.listItem}
-        onPress={() => props.setCity(props.item.title)}>
+        onPress={chooseCity}>
         <View style={styles.listItemView}>
           <Text style={styles.list}>{props.item.title}</Text>
           <Icons

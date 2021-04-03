@@ -1,7 +1,14 @@
 const WeatherState = {
   cityName: 'Sarajevo',
   weatherCondition: 'Rain',
-  temperature: 15,
+  temperature: {
+    temp: 0,
+    feels_like: -4.19,
+    temp_min: 0,
+    temp_max: 0,
+    pressure: 1009,
+    humidity: 80,
+  },
   list: [
     {id: 0, title: 'Sarajevo'},
     {id: 1, title: 'Munich'},

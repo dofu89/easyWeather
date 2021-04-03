@@ -30,7 +30,8 @@ const WeatherApp = (props) => {
         `http://api.openweathermap.org/data/2.5/weather?q=${props.cityName}&appid=${API_KEY}&units=metric`,
       );
       response = await response.data;
-      await props.getTemp(response.main.temp);
+      console.log('GLAVNI OBJEKT', response.main);
+      await props.getTemp(response.main);
       await props.getWeatherCondition(response.weather[0].main);
     }
 
@@ -48,7 +49,9 @@ const WeatherApp = (props) => {
       </View>
       <FlatList
         data={props.list}
-        renderItem={({item}) => <ListCity item={item} />}
+        renderItem={({item}) => (
+          <ListCity item={item} navigation={navigation} />
+        )}
         keyExtractor={(item) => `key-${item.id}`}
       />
       <AddCity />

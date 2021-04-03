@@ -44,7 +44,7 @@ const WeatherContainer = (props) => {
           color="#FFF"
         />
       </View>
-      <Text style={styles.tempText}>{props.temperature.toFixed(0)}˚</Text>
+      <Text style={styles.tempText}>{props.temperature.temp.toFixed(0)}˚</Text>
     </SafeAreaView>
   );
 };

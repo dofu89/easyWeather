@@ -7,6 +7,7 @@ import LogIn from '../components/LogIn';
 import Register from '../components/Register';
 import WeatherApp from '../components/WeatherApp';
 import Profile from '../components/Profile';
+import CurrentCity from '../components/CurrentCity'
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ const Routes = (props) => {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="WeatherApp" component={WeatherApp} />
         <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name='CurrentCity' component={CurrentCity} />
       </Stack.Navigator>
     </NavigationContainer>
   );
