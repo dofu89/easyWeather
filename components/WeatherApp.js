@@ -21,6 +21,7 @@ import {
 } from '../store/actions';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import LinearGradient from 'react-native-linear-gradient';
 
 const WeatherApp = (props) => {
   const {navigation} = props;
@@ -43,11 +44,12 @@ const WeatherApp = (props) => {
   }, [props.cityName]);
 
   return (
-    <View
-      style={[
-        styles.container,
-        {backgroundColor: weatherConditions[props.weatherCondition].color},
-      ]}>
+    <LinearGradient
+      colors={[
+        weatherConditions[props.weatherCondition].color,
+        weatherConditions[props.weatherCondition].color1,
+      ]}
+      style={[styles.container]}>
       <View style={styles.names}>
         <WeatherContainer navigation={navigation} />
       </View>
@@ -59,7 +61,7 @@ const WeatherApp = (props) => {
         keyExtractor={(item) => `key-${item.id}`}
       />
       <AddCity />
-    </View>
+    </LinearGradient>
   );
 };
 const mapStateToProps = (state) => {

@@ -2,23 +2,27 @@ import React from 'react';
 import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
 import {weatherConditions} from '../utils/WeatherConditions';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
+
+import TimeDate from './TimeDate';
 
 import {connect} from 'react-redux';
 
 const CurrentCity = (props) => {
   return (
-    <SafeAreaView
-      style={[
-        styles.container,
-        {backgroundColor: weatherConditions[props.weatherCondition].color},
-      ]}>
+    <LinearGradient
+      colors={[
+        weatherConditions[props.weatherCondition].color,
+        weatherConditions[props.weatherCondition].color1,
+      ]}
+      style={[styles.container]}>
       <View style={styles.mainOne}>
         <View style={styles.cityDate}>
           <Text style={{margin: 10, fontSize: 35, color: 'white'}}>
             {props.cityName}
           </Text>
           <Text style={{fontSize: 20, color: 'white'}}>
-            Thu 5 December 8:41 am
+            <TimeDate />
           </Text>
         </View>
         <View style={styles.weatherTemp}>
@@ -41,8 +45,8 @@ const CurrentCity = (props) => {
             {props.weatherCondition}
           </Text>
         </View>
-        <Text style={{textAlign: 'right', color: 'white'}}>
-          Pressure: {props.temperature.pressure}
+        <Text style={{textAlign: 'right', color: 'white', marginRight: 10}}>
+          Pressure: {props.temperature.pressure} mbar
         </Text>
       </View>
       <View style={styles.mainTwo}>
@@ -63,12 +67,19 @@ const CurrentCity = (props) => {
             <Text style={{color: 'white'}}>{props.temperature.humidity}%</Text>
           </View>
         </View>
-        <Text>Wind</Text>
+        <Text style={{color: 'white', marginLeft: 10}}>Wind</Text>
         <View style={styles.secodn}>
-          <Text>{props.wind.speed}</Text>
+          <MaterialCommunityIcons
+            name={'weather-windy'}
+            size={120}
+            color="#FFF"
+          />
+          <Text style={{color: 'white', fontSize: 20}}>
+            {props.wind.speed.toFixed(1)} km/h
+          </Text>
         </View>
       </View>
-    </SafeAreaView>
+    </LinearGradient>
   );
 };
 
@@ -125,6 +136,8 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 10,
     backgroundColor: 'rgba(255, 255, 255,0.3)',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
   },
 });
 
