@@ -7,6 +7,8 @@ import {
   IS_LOADING,
   SET_TOKEN,
   SET_USERNAME,
+  SET_VISIBILITY,
+  GET_WIND,
 } from './actionTypes';
 
 const initialState = require('./initial.state');
@@ -52,6 +54,16 @@ const weatherReducer = (state = initialState, action) => {
       return {
         ...state,
         username: (state.username = action.data),
+      };
+    case SET_VISIBILITY:
+      return {
+        ...state,
+        visibility: (state.visibility = action.data),
+      };
+    case GET_WIND:
+      return {
+        ...state,
+        wind: (state.wind = action.data),
       };
     default:
       return state;

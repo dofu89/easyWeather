@@ -2,70 +2,89 @@ import React from 'react';
 import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
 import {weatherConditions} from '../utils/WeatherConditions';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {color} from 'react-native-reanimated';
+
+import {connect} from 'react-redux';
 
 const CurrentCity = (props) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={[
+        styles.container,
+        {backgroundColor: weatherConditions[props.weatherCondition].color},
+      ]}>
       <View style={styles.mainOne}>
         <View style={styles.cityDate}>
           <Text style={{margin: 10, fontSize: 35, color: 'white'}}>
-            Sarajevo
+            {props.cityName}
           </Text>
-          <Text style={{fontSize: 20, color: 'gray'}}>
+          <Text style={{fontSize: 20, color: 'white'}}>
             Thu 5 December 8:41 am
           </Text>
         </View>
         <View style={styles.weatherTemp}>
           <MaterialCommunityIcons
-            name={'weather-cloudy'}
+            name={weatherConditions[props.weatherCondition].icon}
             size={100}
             color="#FFF"
           />
-          <Text style={{fontSize: 80, color: 'white'}}>27˚</Text>
+          <Text style={{fontSize: 80, color: 'white'}}>
+            {props.temperature.temp.toFixed(0)}˚
+          </Text>
         </View>
         <View style={styles.feelsLike}>
           <Text style={{marginBottom: 15, fontSize: 20, color: 'white'}}>
-            34˚ / 26˚ Feels like 30˚
+            {props.temperature.temp_min.toFixed(0)}˚/{' '}
+            {props.temperature.temp_max.toFixed(0)}˚ Feels like{' '}
+            {props.temperature.feels_like.toFixed(0)}˚
           </Text>
-          <Text style={{fontSize: 20, color: 'white'}}>Cloudy</Text>
+          <Text style={{fontSize: 20, color: 'white'}}>
+            {props.weatherCondition}
+          </Text>
         </View>
         <Text style={{textAlign: 'right', color: 'white'}}>
-          Yesterday 34˚ / 26˚
+          Pressure: {props.temperature.pressure}
         </Text>
       </View>
       <View style={styles.mainTwo}>
         <View style={styles.first}>
-          <MaterialCommunityIcons
-            name={'water-outline'}
-            size={30}
-            color="#FFF"
-          />
+          <MaterialCommunityIcons name={'eye-outline'} size={30} color="#FFF" />
           <View style={{marginLeft: -25}}>
-            <Text style={{color: 'white'}}>Precipitation</Text>
-            <Text style={{color: 'white'}}>10%</Text>
+            <Text style={{color: 'white'}}>Visibility</Text>
+            <Text style={{color: 'white'}}>{props.visibility}</Text>
           </View>
           <Text style={{fontSize: 40, color: 'white'}}>|</Text>
           <MaterialCommunityIcons
-            name={'weather-sunny'}
-            size={30}
-            color="yellow"
+            name={'water-percent'}
+            size={35}
+            color="#FFF"
           />
           <View style={{marginLeft: -25}}>
-            <Text style={{color: 'white'}}>UV Index</Text>
-            <Text style={{color: 'white'}}>Low</Text>
+            <Text style={{color: 'white'}}>Humidity</Text>
+            <Text style={{color: 'white'}}>{props.temperature.humidity}%</Text>
           </View>
         </View>
-        <Text>Hourly</Text>
+        <Text>Wind</Text>
+        <View style={styles.secodn}>
+          <Text>{props.wind.speed}</Text>
+        </View>
       </View>
     </SafeAreaView>
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    cityName: state.cityName,
+    weatherCondition: state.weatherCondition,
+    temperature: state.temperature,
+    visibility: state.visibility,
+    wind: state.wind,
+  };
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgb(172, 103, 202)',
   },
   mainOne: {
     flex: 1,
@@ -93,7 +112,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   first: {
-    backgroundColor: 'rgba(193,190,186,0.8)',
+    backgroundColor: 'rgba(255, 255, 255,0.3)',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
@@ -101,6 +120,12 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 10,
   },
+  secodn: {
+    flex: 1,
+    margin: 10,
+    borderRadius: 10,
+    backgroundColor: 'rgba(255, 255, 255,0.3)',
+  },
 });
 
-export default CurrentCity;
+export default connect(mapStateToProps)(CurrentCity);

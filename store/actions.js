@@ -7,6 +7,8 @@ import {
   IS_LOADING,
   SET_TOKEN,
   SET_USERNAME,
+  SET_VISIBILITY,
+  GET_WIND,
 } from './actionTypes';
 
 export const setCity = (set) => {
@@ -61,6 +63,20 @@ export const setToken = (set) => {
 export const setUsername = (set) => {
   return {
     type: SET_USERNAME,
+    data: set,
+  };
+};
+
+export const getVisibility = (set) => {
+  return {
+    type: SET_VISIBILITY,
+    data: set,
+  };
+};
+
+export const getWind = (set) => {
+  return {
+    type: GET_WIND,
     data: set,
   };
 };

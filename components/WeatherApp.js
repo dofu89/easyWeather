@@ -16,6 +16,8 @@ import {
   setCity,
   getWeatherCondition,
   isLoading,
+  getVisibility,
+  getWind,
 } from '../store/actions';
 import {connect} from 'react-redux';
 import axios from 'axios';
@@ -33,6 +35,8 @@ const WeatherApp = (props) => {
       console.log('GLAVNI OBJEKT', response.main);
       await props.getTemp(response.main);
       await props.getWeatherCondition(response.weather[0].main);
+      await props.getVisibility(response.visibility);
+      await props.getWind(response.wind);
     }
 
     fetchMyAPI();
@@ -76,6 +80,8 @@ const mapDispatchToProps = (dispatch) => {
     getWeatherCondition: (data) => dispatch(getWeatherCondition(data)),
     isLoading: () => dispatch(isLoading()),
     //addCity: (city) => dispatch(addCity(city)),
+    getVisibility: (set) => dispatch(getVisibility(set)),
+    getWind: (set) => dispatch(getWind(set)),
   };
 };
 

@@ -17,6 +17,12 @@ const WeatherState = {
   isLoading: false,
   token: '',
   username: '',
+  visibility: 50,
+  wind: {
+    speed: 0,
+    deg: 0,
+    gust: 0,
+  },
 };
 
 module.exports = WeatherState;
