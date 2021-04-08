@@ -23,6 +23,10 @@ const WeatherState = {
     deg: 0,
     gust: 0,
   },
+  sun: {
+    sunrise: 0,
+    sunset: 1,
+  },
 };
 
 module.exports = WeatherState;

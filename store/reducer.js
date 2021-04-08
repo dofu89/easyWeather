@@ -9,6 +9,7 @@ import {
   SET_USERNAME,
   SET_VISIBILITY,
   GET_WIND,
+  SUN_POSITION,
 } from './actionTypes';
 
 const initialState = require('./initial.state');
@@ -64,6 +65,11 @@ const weatherReducer = (state = initialState, action) => {
       return {
         ...state,
         wind: (state.wind = action.data),
+      };
+    case SUN_POSITION:
+      return {
+        ...state,
+        sun: (state.sun = action.data),
       };
     default:
       return state;

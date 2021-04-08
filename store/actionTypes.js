@@ -8,3 +8,4 @@ export const SET_TOKEN = 'SET_TOKEN';
 export const SET_USERNAME = 'SET_USERNAME';
 export const SET_VISIBILITY = 'SET_VISIBILITY';
 export const GET_WIND = 'GET_WIND';
+export const SUN_POSITION = 'SUN_POSITION';

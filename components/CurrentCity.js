@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import LinearGradient from 'react-native-linear-gradient';
 
 import TimeDate from './TimeDate';
+import SunControl from './SunControl';
 
 import {connect} from 'react-redux';
 
@@ -71,12 +72,13 @@ const CurrentCity = (props) => {
         <View style={styles.secodn}>
           <MaterialCommunityIcons
             name={'weather-windy'}
-            size={120}
+            size={100}
             color="#FFF"
           />
           <Text style={{color: 'white', fontSize: 20}}>
             {props.wind.speed.toFixed(1)} km/h
           </Text>
+          <SunControl props={props} />
         </View>
       </View>
     </LinearGradient>

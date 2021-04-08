@@ -29,8 +29,8 @@ export const weatherConditions = {
   },
 
   Snow: {
-    color: '#c0c0aa',
-    color1: '#1cefff',
+    color: '#1cefff',
+    color1: '#c0c0aa',
     title: 'Snow',
     subtitle: 'Get out and build a snowman for me',
     icon: 'weather-snowy',

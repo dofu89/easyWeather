@@ -9,6 +9,7 @@ import {
   SET_USERNAME,
   SET_VISIBILITY,
   GET_WIND,
+  SUN_POSITION,
 } from './actionTypes';
 
 export const setCity = (set) => {
@@ -77,6 +78,13 @@ export const getVisibility = (set) => {
 export const getWind = (set) => {
   return {
     type: GET_WIND,
+    data: set,
+  };
+};
+
+export const getSunPosition = (set) => {
+  return {
+    type: SUN_POSITION,
     data: set,
   };
 };
