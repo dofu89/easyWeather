@@ -34,7 +34,6 @@ const WeatherApp = (props) => {
         `http://api.openweathermap.org/data/2.5/weather?q=${props.cityName}&appid=${API_KEY}&units=metric`,
       );
       response = await response.data;
-      console.log('GLAVNI OBJEKT', response.main);
       await props.getTemp(response.main);
       await props.getWeatherCondition(response.weather[0].main);
       await props.getVisibility(response.visibility);

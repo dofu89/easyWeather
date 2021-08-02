@@ -68,8 +68,12 @@ const CurrentCity = (props) => {
             <Text style={{color: 'white'}}>{props.temperature.humidity}%</Text>
           </View>
         </View>
-        <Text style={{color: 'white', marginLeft: 10}}>Wind</Text>
+        <Text style={{color: 'white', marginLeft: 10}}>About</Text>
         <View style={styles.secodn}>
+          <Text
+            style={{position: 'absolute', top: 10, left: 10, color: 'white'}}>
+            Wind
+          </Text>
           <MaterialCommunityIcons
             name={'weather-windy'}
             size={100}
@@ -78,7 +82,7 @@ const CurrentCity = (props) => {
           <Text style={{color: 'white', fontSize: 20}}>
             {props.wind.speed.toFixed(1)} km/h
           </Text>
-          <SunControl props={props} />
+          <SunControl />
         </View>
       </View>
     </LinearGradient>

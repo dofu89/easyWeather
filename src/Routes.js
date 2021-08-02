@@ -7,7 +7,7 @@ import LogIn from '../components/LogIn';
 import Register from '../components/Register';
 import WeatherApp from '../components/WeatherApp';
 import Profile from '../components/Profile';
-import CurrentCity from '../components/CurrentCity'
+import CurrentCity from '../components/CurrentCity';
 
 const Stack = createStackNavigator();
 
@@ -16,12 +16,13 @@ const Routes = (props) => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{header: () => null}}
-        initialRouteName={props.isLoading ? 'WeatherApp' : 'LogIn'}>
+        //initialRouteName={props.isLoading ? 'WeatherApp' : 'LogIn'}  ---> with auth
+        initialRouteName={'WeatherApp'}>
         <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="WeatherApp" component={WeatherApp} />
         <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name='CurrentCity' component={CurrentCity} />
+        <Stack.Screen name="CurrentCity" component={CurrentCity} />
       </Stack.Navigator>
     </NavigationContainer>
   );
