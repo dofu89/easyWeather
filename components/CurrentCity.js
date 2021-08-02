@@ -68,7 +68,6 @@ const CurrentCity = (props) => {
             <Text style={{color: 'white'}}>{props.temperature.humidity}%</Text>
           </View>
         </View>
-        <Text style={{color: 'white', marginLeft: 10}}>About</Text>
         <View style={styles.secodn}>
           <Text
             style={{position: 'absolute', top: 10, left: 10, color: 'white'}}>
@@ -81,6 +80,10 @@ const CurrentCity = (props) => {
           />
           <Text style={{color: 'white', fontSize: 20}}>
             {props.wind.speed.toFixed(1)} km/h
+          </Text>
+          <Text
+            style={{position: 'absolute', top: 130, left: 10, color: 'white'}}>
+            Sun position
           </Text>
           <SunControl />
         </View>

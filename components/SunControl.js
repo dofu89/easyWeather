@@ -57,15 +57,6 @@ const SunControl = (props) => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text
-        style={{
-          color: 'white',
-          fontSize: 18,
-          position: 'absolute',
-          top: 5,
-        }}>
-        Sun position
-      </Text>
       {sun >= props.sun.sunrise * 1000 && sun <= props.sun.sunset * 1000 ? (
         <View style={styles.sliderView}>
           <Slider
@@ -81,8 +72,8 @@ const SunControl = (props) => {
           />
         </View>
       ) : (
-        <Text style={{color: 'white', fontSize: 18}}>
-          is from the other side
+        <Text style={{color: 'white', fontSize: 14}}>
+          ...is from the other side
         </Text>
       )}
       {/*<Text>{console.log(new Date(props.sun.sunrise * 1000).toString())}</Text>
